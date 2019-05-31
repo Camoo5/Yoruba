@@ -11,6 +11,7 @@
         <activity android:name=".NumbersActivity" android:label="Numbers"/>
         <activity android:name=".PhrasesActivity" android:label="Phrases"/>
         <activity android:name=".ColorsActivity"  android:label="Colors"/>
+        <activity android:name=".DaysMonthsActivity"  android:label="Days Months"/>
         <activity android:name=".FamilyActivity"  android:label="Family Members"/>
         <activity android:name=".MainActivity">
             <intent-filter>

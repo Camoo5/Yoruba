@@ -15,6 +15,7 @@
  */
 package com.example.android.yoruba;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -74,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         //Find the view that shows the family category
         TextView family = findViewById (R.id.family);
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         TextView colors = findViewById (R.id.colors);
 
         //Set a clicklistener on that view
-       colors.setOnClickListener (new OnClickListener () {
+        colors.setOnClickListener (new OnClickListener () {
 
             // The code in this method will be executed when the colors category is clicked on.
             @Override
@@ -112,15 +112,33 @@ public class MainActivity extends AppCompatActivity {
                 //Start the new activity
                 startActivity (colorsIntent);
 
+            }
+        });
+        //Find the view that shows the daysmonths category
+        TextView daysmonths = findViewById (R.id.daysmonths);
 
+        //Set a clicklistener on that view
+        daysmonths.setOnClickListener (new OnClickListener () {
+
+            // The code in this method will be executed when the colors category is clicked on.
+            @Override
+            public void onClick(View view) {
+
+                //Create a new intent to open the {@link colorsActivity}
+                Intent daysmonthsIntent = new Intent (MainActivity.this, DaysMonthsActivity.class);
+
+                //Start the new activity
+                startActivity (daysmonthsIntent);
 
 
             }
+
         });
-
-
 
     }
 
 }
+
+
+
 

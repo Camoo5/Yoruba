@@ -2,7 +2,7 @@ package com.example.android.yoruba;
 
 /**
  * {@lINK word} represents a vocabulary that the user wants to learn
- * It contains a default translation and a Yoruba translation for the word.
+ * It contains a default translation and a yoruba translation for the word.
  */
 
 public class Word {
@@ -10,7 +10,7 @@ public class Word {
     /**Default translation for the word */
     private String mDefaultTranslation;
 
-    /**Yoruba translation for the word */
+    /**yoruba translation for the word */
     private String mYorubaTranslation;
 
     /**
@@ -31,7 +31,7 @@ public class Word {
             return mDefaultTranslation;
         }
 /**
- * Get the Yoruba translation of the word
+ * Get the yoruba translation of the word
  */
         public String getYorubaTranslation () {
             return mYorubaTranslation;

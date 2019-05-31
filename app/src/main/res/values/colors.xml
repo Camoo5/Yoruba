@@ -15,7 +15,7 @@
 -->
 <resources>
     <!-- Primary color of the app (shown in the app bar) -->
-    <color name="primary_color">#33691E</color>
+    <color name="primary_color">#E8FFDA22</color>
 
     <!-- Primary dark color of the app (shown in the status bar) -->
     <color name="primary_dark_color">#BF360C</color>
@@ -34,4 +34,8 @@
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
+
+    <!-- Background color for the daysmonths category -->
+    <color name="category_daysmonths">#3F51B5</color>
+
 </resources>
