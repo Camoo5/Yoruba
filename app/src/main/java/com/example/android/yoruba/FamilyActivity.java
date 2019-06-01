@@ -16,16 +16,18 @@ public class FamilyActivity extends AppCompatActivity {
 
         //Create an Arraylist of words objects
         ArrayList <Word> words = new ArrayList <Word> ();
-        words.add (new Word ("father", "baba"));
-        words.add (new Word ("mother", "mama"));
-        words.add (new Word ("son", "omo okunrin"));
-        words.add (new Word ("daughter", "omo obinrin"));
-        words.add (new Word ("older brother", "egbon okunrin"));
-        words.add (new Word ("younger brother", "aburo okunrin"));
-        words.add (new Word ("older sister", "egon obinrin"));
-        words.add (new Word ("younger sister", "aburo obinrin"));
-        words.add (new Word ("grandmother", "mama mama"));
-        words.add (new Word ("grandfather", "baba baba"));
+        words.add (new Word ("father", "baba",R.drawable.family_father));
+        words.add (new Word ("mother", "mama",R.drawable.family_mother));
+        words.add (new Word ("son", "omo okunrin",R.drawable.family_son));
+        words.add (new Word ("daughter", "omo obinrin",R.drawable.family_daughter));
+        words.add (new Word ("older brother", "egbon okunrin",R.drawable.family_older_brother));
+        words.add (new Word ("younger brother", "aburo okunrin",R.drawable.family_younger_brother));
+        words.add (new Word ("older sister", "egon obinrin",R.drawable.family_older_sister));
+        words.add (new Word ("younger sister", "aburo obinrin",R.drawable.family_younger_sister));
+        words.add (new Word ("grandmother", "mama mama",R.drawable.family_grandmother));
+        words.add (new Word ("grandfather", "baba baba",R.drawable.family_grandfather));
+        words.add (new Word ("baby", "baba baba",R.drawable.baby));
+        words.add (new Word ("relative", "baba baba",R.drawable.relative));
 
         // Create an {@link WordAdapter}, whose data source is a list of
         // {@link Word}s. The adapter knows how to create list item views for each item

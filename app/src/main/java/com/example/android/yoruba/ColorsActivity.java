@@ -16,19 +16,14 @@ public class ColorsActivity extends AppCompatActivity {
 
         //Create an Arraylist of words objects
         ArrayList<Word> words = new ArrayList <Word>();
-        words.add (new Word("white","funfun"));
-        words.add (new Word("black","dúdú"));
-        words.add (new Word("blue","àwö sánmà"));
-        words.add (new Word("brown","àwö ara"));
-        words.add (new Word("yellow"," ìyèyè"));
-        words.add (new Word("gold","wúrà"));
-        words.add (new Word("silver","fàdákà"));
-        words.add (new Word("grey","àwö eléérú"));
-        words.add (new Word("pink","pupa fêêrê"));
-        words.add (new Word("red","pupa"));
-        words.add (new Word("purple","àwö elésè àlùkò"));
-        words.add (new Word("green","àwö ewéko"));
-        words.add (new Word("indigo","aro"));
+        words.add (new Word("white","funfun",R.drawable.color_white));
+        words.add (new Word("black","dúdú",R.drawable.color_black));
+        words.add (new Word("blue","àwö sánmà",R.drawable.color_blue));
+        words.add (new Word("brown","àwö ara",R.drawable.color_brown));
+        words.add (new Word("yellow"," ìyèyè",R.drawable.color_mustard_yellow));
+        words.add (new Word("grey","àwö eléérú",R.drawable.color_gray));
+        words.add (new Word("red","pupa",R.drawable.color_red));
+        words.add (new Word("green","àwö ewéko",R.drawable.color_green));
 
 
 
