@@ -17,7 +17,7 @@ public class Word {
     private int mImageResourceId = NO_IMAGE_PROVIDED;
 
     /** Constant value that represents no image was provided for this word */
-    private static final int NO_IMAGE_PROVIDED = -1;
+    private static final int NO_IMAGE_PROVIDED = 0;
 
     /**
      * Create a new Word object.

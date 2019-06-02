@@ -33,5 +33,6 @@
 
     <string name= "eni">lutti</string>
     <string name= "one">one</string>
-  >
+    <string name="image_for_activities">image for activities</string>
+    >
 </resources>
