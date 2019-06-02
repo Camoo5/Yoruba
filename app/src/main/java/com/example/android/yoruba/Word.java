@@ -27,6 +27,10 @@ public class Word {
      */
     private static final int NO_IMAGE_PROVIDED = 0;
 
+    /** Audio resource ID for the word */
+    private int mAudioResourceId;
+
+
     /**
      * Create a new Word object.
      *
@@ -34,40 +38,66 @@ public class Word {
      *                           (such as English)
      * @param yorubaTranslation  is the word in the Yoruba language
      */
-    public Word(String defaultTranslation, String yorubaTranslation, int imageResourceId) {
-        mDefaultTranslation = defaultTranslation;
-        mYorubaTranslation = yorubaTranslation;
-        mImageResourceId = imageResourceId;
-    }
+    // constructor for the new word object
+    public Word (String defaultTranslation, String yorubaTranslation, int audioResourceId){
+            mDefaultTranslation = defaultTranslation;
+            mYorubaTranslation = yorubaTranslation;
+            mAudioResourceId = audioResourceId;
+        }
+
 
     /**
-     * Get the default translation of the word
+     @@ public Word(String defaultTranslation, String miwokTranslation) {
+      *                           (such as English)
+      * @param yorubaTranslation is the word in the Miwok language
+     * @param imageResourceId is the drawable resource ID for the image associated with the word
+     *
+     * @param audioResourceId is the resource ID for the audio file associated with this word
      */
-    public String getDefaultTranslation() {
-        return mDefaultTranslation;
-    }
 
-    /**
-     * Get the yoruba translation of the word
-     */
-    public String getYorubaTranslation() {
-        return mYorubaTranslation;
-    }
+    public Word (String defaultTranslation, String yorubaTranslation, int imageResourceId,int audioResourceId){
+                mDefaultTranslation = defaultTranslation;
+                mYorubaTranslation = yorubaTranslation;
+                mImageResourceId = imageResourceId;
+                mAudioResourceId = audioResourceId;
+            }
 
-    /**
-     * Return the image resource ID of the word.
-     */
-    public int getImageResourceId() {
-        return mImageResourceId;
-    }
 
-    /**
-     * Returns whether or not there is an image for this word.
-     */
-    public boolean hasImage() {
-        return mImageResourceId != NO_IMAGE_PROVIDED;
-    }
-}
+            /**
+             * Get the default translation of the word
+             */
+            public String getDefaultTranslation () {
+                return mDefaultTranslation;
+            }
+
+            /**
+             * Get the yoruba translation of the word
+             */
+            public String getYorubaTranslation () {
+                return mYorubaTranslation;
+            }
+
+            /**
+             * Return the image resource ID of the word.
+             */
+            public int getImageResourceId () {
+                return mImageResourceId;
+            }
+
+            /**
+             * Returns whether or not there is an image for this word.
+             */
+            public boolean hasImage () {
+                return mImageResourceId != NO_IMAGE_PROVIDED;
+            }
+                /**
+                 * Return the audio resource ID of the word.
+                 */
+                public int getAudioResourceId () {
+                    return mAudioResourceId;
+
+                }
+            }
 
 
 
