@@ -69,7 +69,7 @@ public class DaysMonthsActivity extends AppCompatActivity {
                 mMediaPlayer = MediaPlayer.create(DaysMonthsActivity.this, word.getAudioResourceId());
 
                 // Start the audio file
-                mMediaPlayer.start();
+                mMediaPlayer.start ();
             }
         });
 
