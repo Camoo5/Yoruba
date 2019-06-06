@@ -12,6 +12,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import static com.example.android.yoruba.R.raw.mother;
+
 public class FamilyActivity extends AppCompatActivity {
 
     /** Handles playback of all the sound files */
@@ -73,7 +75,7 @@ public class FamilyActivity extends AppCompatActivity {
         //Create an Arraylist of words objects
         final ArrayList <Word> words = new ArrayList <Word> ();
         words.add (new Word ("father", "baba", R.drawable.family_father,R.raw.father));
-        words.add (new Word ("mother", "mama", R.drawable.family_mother,R.raw.mother ));
+        words.add (new Word ("mother", "mama", R.drawable.family_mother));
         words.add (new Word ("son", "omo okunrin", R.drawable.family_son,R.raw.son ));
         words.add (new Word ("daughter", "omo obinrin", R.drawable.family_daughter,R.raw.daughter ));
         words.add (new Word ("older brother", "egbon okunrin", R.drawable.family_older_brother,R.raw.older_brother));
