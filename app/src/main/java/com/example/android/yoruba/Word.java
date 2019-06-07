@@ -36,7 +36,7 @@ public class Word {
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
      *                           (such as English)
-     * @param yorubaTranslation  is the word in the Yoruba language
+     * @param yorubaTranslation  is the word in the yoruba language
      */
     // constructor for the new word object
     public Word (String defaultTranslation, String yorubaTranslation, int audioResourceId){

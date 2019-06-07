@@ -48,19 +48,19 @@ public class WordAdapter extends ArrayAdapter <Word> {
 
 
         //Find the TextView in the list_item.xml with the ID default_text-View
-        TextView defaultTextView = (TextView) listItemView.findViewById (R.id.default_text_view);
+        TextView defaultTextView = listItemView.findViewById (R.id.default_text_view);
         // Get the version name from the current Word object and
         // set this text on the name TextView
         defaultTextView.setText (word_item.getDefaultTranslation ());
 
         //Find the TextView in the list_item.xml with the ID yoruba text_view
-        TextView yorubaTextView = (TextView) listItemView.findViewById (R.id.yoruba_text_view);
-        // Get the Yoruba translation from the currentword object and set this text on
-        // the Yoruba TextView
+        TextView yorubaTextView = listItemView.findViewById (R.id.yoruba_text_view);
+        // Get the yoruba translation from the currentword object and set this text on
+        // the yoruba TextView
         yorubaTextView.setText (word_item.getYorubaTranslation ());
 
         // Find the ImageView in the list_item.xml layout with the ID image.
-        ImageView mImageView = (ImageView) listItemView.findViewById (R.id.image);
+        ImageView mImageView = listItemView.findViewById (R.id.image);
         if (word_item.hasImage ()) {
             //if an image is available, display the provided image based on the resource ID
             mImageView.setImageResource (word_item.getImageResourceId ());

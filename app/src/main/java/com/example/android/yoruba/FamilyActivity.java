@@ -75,7 +75,7 @@ public class FamilyActivity extends AppCompatActivity {
         //Create an Arraylist of words objects
         final ArrayList <Word> words = new ArrayList <Word> ();
         words.add (new Word ("father", "baba", R.drawable.family_father,R.raw.father));
-        words.add (new Word ("mother", "mama", R.drawable.family_mother));
+        words.add (new Word ("mother", "mama", R.drawable.family_mother, mother));
         words.add (new Word ("son", "omo okunrin", R.drawable.family_son,R.raw.son ));
         words.add (new Word ("daughter", "omo obinrin", R.drawable.family_daughter,R.raw.daughter ));
         words.add (new Word ("older brother", "egbon okunrin", R.drawable.family_older_brother,R.raw.older_brother));
@@ -96,7 +96,7 @@ public class FamilyActivity extends AppCompatActivity {
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // word_list.xml layout file.
-        ListView listView = (ListView) findViewById (R.id.word_list);
+        ListView listView = findViewById (R.id.word_list);
 
         // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Word} in the list.
