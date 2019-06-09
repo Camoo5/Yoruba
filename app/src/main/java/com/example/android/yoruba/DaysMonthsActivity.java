@@ -15,30 +15,20 @@ import java.util.ArrayList;
 
 public class DaysMonthsActivity extends AppCompatActivity {
 
-    /** Handles playback of all the sound files */
+    /**
+     * Handles playback of all the sound files
+     */
     private MediaPlayer mMediaPlayer;
 
-    /** Handles audio focus when playing a sound file */
-    private AudioManager mAudioManager;
-
     /**
-     * This listener gets triggered when the {@link MediaPlayer} has completed
-     * playing the audio file.
+     * Handles audio focus when playing a sound file
      */
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            // Now that the sound file has finished playing, release the media player resources.
-            releaseMediaPlayer();
-        }
-    };
-
-
+    private AudioManager mAudioManager;
     /**
      * This listener gets triggered whenever the audio focus changes
      * (i.e., we gain or lose audio focus because of another app or device).
      */
-    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener () {
         @Override
         public void onAudioFocusChange(int focusChange) {
             if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
@@ -50,16 +40,27 @@ public class DaysMonthsActivity extends AppCompatActivity {
 
                 // Pause playback and reset player to the start of the file. That way, we can
                 // play the word from the beginning when we resume playback.
-                mMediaPlayer.pause();
-                mMediaPlayer.seekTo(0);
+                mMediaPlayer.pause ();
+                mMediaPlayer.seekTo (0);
             } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
                 // The AUDIOFOCUS_GAIN case means we have regained focus and can resume playback.
-                mMediaPlayer.start();
+                mMediaPlayer.start ();
             } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
                 // The AUDIOFOCUS_LOSS case means we've lost audio focus and
                 // Stop playback and clean up resources
-                releaseMediaPlayer();
+                releaseMediaPlayer ();
             }
+        }
+    };
+    /**
+     * This listener gets triggered when the {@link MediaPlayer} has completed
+     * playing the audio file.
+     */
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener () {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            // Now that the sound file has finished playing, release the media player resources.
+            releaseMediaPlayer ();
         }
     };
 
@@ -69,29 +70,29 @@ public class DaysMonthsActivity extends AppCompatActivity {
         setContentView (R.layout.word_list);
 
         // Create and setup the {@link AudioManager} to request audio focus
-        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getSystemService (Context.AUDIO_SERVICE);
 
         //Create an Arraylist of words objects
         final ArrayList <Word> words = new ArrayList <Word> ();
-        words.add (new Word ("monday", "ojọ́ ajé", 0,R.raw.monday));
-        words.add (new Word ("tuesday", "ojọ́ iségun", 0,R.raw.tuesday));
-        words.add (new Word ("wednesday", "ojọ́ ‘rú", 0,R.raw.wednesday));
-        words.add (new Word ("thursday", "ojọ́ bo", 0,R.raw.thursday));
-        words.add (new Word ("friday", " ojọ́ eti", 0,R.raw.friday));
-        words.add (new Word ("saturday", "ojọ́ abameta", 0,R.raw.saturday));
-        words.add (new Word ("sunday", "ojọ́ aiku", 0,R.raw.sunday));
-        words.add (new Word ("january", "seere", 0,R.raw.january));
-        words.add (new Word ("february", "erele", 0,R.raw.february));
-        words.add (new Word ("march", "erénà", 0,R.raw.march));
-        words.add (new Word ("april", "igbe", 0,R.raw.april));
-        words.add (new Word ("may", "ebìbí", 0,R.raw.may));
-        words.add (new Word ("june", "okudu", 0,R.raw.june));
-        words.add (new Word ("july", "agẹmo", 0,R.raw.july));
-        words.add (new Word ("august", "ogun", 0,R.raw.august));
-        words.add (new Word ("september", "owéré", 0,R.raw.september));
-        words.add (new Word ("october", "owara", 0,R.raw.october));
-        words.add (new Word ("november", "bèlu", 0,R.raw.november));
-        words.add (new Word ("december", "opé", 0,R.raw.december));
+        words.add (new Word ("monday", "ojọ́ ajé", 0, R.raw.monday));
+        words.add (new Word ("tuesday", "ojọ́ iségun", 0, R.raw.tuesday));
+        words.add (new Word ("wednesday", "ojọ́ ‘rú", 0, R.raw.wednesday));
+        words.add (new Word ("thursday", "ojọ́ bo", 0, R.raw.thursday));
+        words.add (new Word ("friday", " ojọ́ eti", 0, R.raw.friday));
+        words.add (new Word ("saturday", "ojọ́ abameta", 0, R.raw.saturday));
+        words.add (new Word ("sunday", "ojọ́ aiku", 0, R.raw.sunday));
+        words.add (new Word ("january", "seere", 0, R.raw.january));
+        words.add (new Word ("february", "erele", 0, R.raw.february));
+        words.add (new Word ("march", "erénà", 0, R.raw.march));
+        words.add (new Word ("april", "igbe", 0, R.raw.april));
+        words.add (new Word ("may", "ebìbí", 0, R.raw.may));
+        words.add (new Word ("june", "okudu", 0, R.raw.june));
+        words.add (new Word ("july", "agẹmo", 0, R.raw.july));
+        words.add (new Word ("august", "ogun", 0, R.raw.august));
+        words.add (new Word ("september", "owéré", 0, R.raw.september));
+        words.add (new Word ("october", "owara", 0, R.raw.october));
+        words.add (new Word ("november", "bèlu", 0, R.raw.november));
+        words.add (new Word ("december", "opé", 0, R.raw.december));
 
         // Create an {@link WordAdapter}, whose data source is a list of
         // {@link Word}s. The adapter knows how to create list item views for each item
@@ -108,20 +109,20 @@ public class DaysMonthsActivity extends AppCompatActivity {
         // {@link ListView} will display list items for each {@link Word} in the list.
         listView.setAdapter (wordadapter);
         // Set a click listener to play the audio when the list item is clicked on
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener (new AdapterView.OnItemClickListener () {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            public void onItemClick(AdapterView <?> adapterView, View view, int position, long l) {
                 // Release the media player if it currently exists because we are about to
                 // play a different sound file
-                releaseMediaPlayer();
+                releaseMediaPlayer ();
 
                 // Get the {@link Word} object at the given position the user clicked on
-                Word word = words.get(position);
+                Word word = words.get (position);
 
                 // Request audio focus so in order to play the audio file. The app needs to play a
                 // short audio file, so we will request audio focus with a short amount of time
                 // with AUDIOFOCUS_GAIN_TRANSIENT.
-                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                int result = mAudioManager.requestAudioFocus (mOnAudioFocusChangeListener,
                         AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
@@ -144,19 +145,18 @@ public class DaysMonthsActivity extends AppCompatActivity {
                     mMediaPlayer.setOnCompletionListener (mCompletionListener);
                 }
 
-                }
+            }
         });
 
     }
 
     @Override
     protected void onStop() {
-        super.onStop();
+        super.onStop ();
         // When the activity is stopped, release the media player resources because we won't
         // be playing any more sounds.
-        releaseMediaPlayer();
+        releaseMediaPlayer ();
     }
-
 
 
     /**
@@ -167,7 +167,7 @@ public class DaysMonthsActivity extends AppCompatActivity {
         if (mMediaPlayer != null) {
             // Regardless of the current state of the media player, release its resources
             // because we no longer need it.
-            mMediaPlayer.release();
+            mMediaPlayer.release ();
 
             // Set the media player back to null. For our code, we've decided that
             // setting the media player to null is an easy way to tell that the media player

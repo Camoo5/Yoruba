@@ -22,19 +22,6 @@ public class PhrasesActivity extends AppCompatActivity {
      * Handles audio focus when playing a sound file
      */
     private AudioManager mAudioManager;
-
-    /**
-     * This listener gets triggered when the {@link MediaPlayer} has completed
-     * playing the audio file.
-     */
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener () {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            // Now that the sound file has finished playing, release the media player resources.
-            releaseMediaPlayer ();
-        }
-    };
-
     /**
      * This listener gets triggered whenever the audio focus changes
      * (i.e., we gain or lose audio focus because of another app or device).
@@ -61,6 +48,17 @@ public class PhrasesActivity extends AppCompatActivity {
                 // Stop playback and clean up resources
                 releaseMediaPlayer ();
             }
+        }
+    };
+    /**
+     * This listener gets triggered when the {@link MediaPlayer} has completed
+     * playing the audio file.
+     */
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener () {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            // Now that the sound file has finished playing, release the media player resources.
+            releaseMediaPlayer ();
         }
     };
 
@@ -122,7 +120,7 @@ public class PhrasesActivity extends AppCompatActivity {
                 // Request audio focus so in order to play the audio file. The app needs to play a
                 // short audio file, so we will request audio focus with a short amount of time
                 // with AUDIOFOCUS_GAIN_TRANSIENT.
-                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                int result = mAudioManager.requestAudioFocus (mOnAudioFocusChangeListener,
                         AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
@@ -130,15 +128,15 @@ public class PhrasesActivity extends AppCompatActivity {
 
 
                     // Create and setup the {@link MediaPlayer} for the audio resource associated
-                // with the current word
-                mMediaPlayer = MediaPlayer.create (PhrasesActivity.this, word.getAudioResourceId ());
+                    // with the current word
+                    mMediaPlayer = MediaPlayer.create (PhrasesActivity.this, word.getAudioResourceId ());
 
-                // Start the audio file
-                mMediaPlayer.start ();
+                    // Start the audio file
+                    mMediaPlayer.start ();
 
-                // Setup a listener on the media player, so that we can stop and release the
-                // media player once the sound has finished playing.
-                mMediaPlayer.setOnCompletionListener (mCompletionListener);
+                    // Setup a listener on the media player, so that we can stop and release the
+                    // media player once the sound has finished playing.
+                    mMediaPlayer.setOnCompletionListener (mCompletionListener);
 
                 }
             }
@@ -146,13 +144,12 @@ public class PhrasesActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onStop() {
-        super.onStop();
+        super.onStop ();
         // When the activity is stopped, release the media player resources because we won't
         // be playing any more sounds.
-        releaseMediaPlayer();
+        releaseMediaPlayer ();
     }
 
 
@@ -164,7 +161,7 @@ public class PhrasesActivity extends AppCompatActivity {
         if (mMediaPlayer != null) {
             // Regardless of the current state of the media player, release its resources
             // because we no longer need it.
-            mMediaPlayer.release();
+            mMediaPlayer.release ();
 
             // Set the media player back to null. For our code, we've decided that
             // setting the media player to null is an easy way to tell that the media player
