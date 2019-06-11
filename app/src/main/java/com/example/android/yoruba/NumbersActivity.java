@@ -81,7 +81,7 @@ public class NumbersActivity extends AppCompatActivity {
         words.add (new Word ("five", "marun", R.drawable.number_five, R.raw.number_five));
         words.add (new Word ("six", "mefa", R.drawable.number_six, R.raw.number_six));
         words.add (new Word ("seven", "meje", R.drawable.number_seven, R.raw.number_seven));
-        words.add (new Word ("eight", "mẹsan", R.drawable.number_eight, R.raw.number_eight));
+        words.add (new Word ("eight", "mẹjo", R.drawable.number_eight, R.raw.number_eight));
         words.add (new Word ("nine", "mẹsan", R.drawable.number_nine, R.raw.number_nine));
         words.add (new Word ("ten", "mẹwàá", R.drawable.number_ten, R.raw.number_ten));
 
