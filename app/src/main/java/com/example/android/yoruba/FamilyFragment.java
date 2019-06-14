@@ -1,20 +1,24 @@
 package com.example.android.yoruba;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static com.example.android.yoruba.R.raw.mother;
-
-public class FamilyActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class FamilyFragment extends Fragment {
 
     /**
      * Handles playback of all the sound files
@@ -65,18 +69,27 @@ public class FamilyActivity extends AppCompatActivity {
         }
     };
 
+    public FamilyFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate (R.layout.word_list, container, false);
+
+        //create and setup link to get audio focus
+        mAudioManager = (AudioManager) getActivity ().getSystemService (Context.AUDIO_SERVICE);
+
 
         // Create and setup the {@link AudioManager} to request audio focus
-        mAudioManager = (AudioManager) getSystemService (Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getActivity ().getSystemService (Context.AUDIO_SERVICE);
 
         //Create an Arraylist of words objects
         final ArrayList <Word> words = new ArrayList <Word> ();
         words.add (new Word ("father", "baba", R.drawable.family_father, R.raw.father));
-        words.add (new Word ("mother", "mama", R.drawable.family_mother, mother));
+        words.add (new Word ("mother", "mama", R.drawable.family_mother, R.raw.mother));
         words.add (new Word ("son", "omo okunrin", R.drawable.family_son, R.raw.son));
         words.add (new Word ("daughter", "omo obinrin", R.drawable.family_daughter, R.raw.daughter));
         words.add (new Word ("older brother", "egbon okunrin", R.drawable.family_older_brother, R.raw.older_brother));
@@ -91,13 +104,13 @@ public class FamilyActivity extends AppCompatActivity {
         // Create an {@link WordAdapter}, whose data source is a list of
         // {@link Word}s. The adapter knows how to create list item views for each item
         // in the list.
-        WordAdapter wordadapter = new WordAdapter (this, words, R.color.category_family);
+        WordAdapter wordadapter = new WordAdapter (getActivity (), words, R.color.category_family);
 
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // word_list.xml layout file.
-        ListView listView = findViewById (R.id.word_list);
+        final ListView listView = rootView.findViewById (R.id.word_list);
 
         // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Word} in the list.
@@ -114,7 +127,6 @@ public class FamilyActivity extends AppCompatActivity {
                 // Get the {@link Word} object at the given position the user clicked on
                 Word word = words.get (position);
 
-
                 // Request audio focus so in order to play the audio file. The app needs to play a
                 // short audio file, so we will request audio focus with a short amount of time
                 // with AUDIOFOCUS_GAIN_TRANSIENT.
@@ -127,7 +139,7 @@ public class FamilyActivity extends AppCompatActivity {
 
                     // Create and setup the {@link MediaPlayer} for the audio resource associated
                     // with the current word
-                    mMediaPlayer = MediaPlayer.create (FamilyActivity.this, word.getAudioResourceId ());
+                    mMediaPlayer = MediaPlayer.create (getActivity (), word.getAudioResourceId ());
 
                     // Start the audio file
                     mMediaPlayer.start ();
@@ -135,18 +147,17 @@ public class FamilyActivity extends AppCompatActivity {
                     // Setup a listener on the media player, so that we can stop and release the
                     // media player once the sound has finished playing.
                     mMediaPlayer.setOnCompletionListener (mCompletionListener);
-                }
 
+                }
             }
         });
-
+        return rootView;
     }
 
+    // release audio resource when activity is stoppe
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop ();
-        // When the activity is stopped, release the media player resources because we won't
-        // be playing any more sounds.
         releaseMediaPlayer ();
     }
 
@@ -168,6 +179,12 @@ public class FamilyActivity extends AppCompatActivity {
             //Regardless of whether or not we were granted audio focus, abandon it. This also
             //Unregisters the AudioFocusChangeListener so we don't get anymore callbacks
             mAudioManager.abandonAudioFocus (mOnAudioFocusChangeListener);
+
+
         }
     }
+
 }
+
+
+

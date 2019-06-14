@@ -1,6 +1,6 @@
 <resources>
     <!-- Primary color of the app (shown in the app bar) -->
-    <color name="primary_color">#E8FFDA22</color>
+    <color name="primary_color">#654321</color>
 
     <!-- Primary dark color of the app (shown in the status bar) -->
     <color name="primary_dark_color">#BF360C</color>
@@ -15,7 +15,7 @@
     <color name="category_family">#379237</color>
 
     <!-- Background color for the colors category -->
-    <color name="category_colors">#8800A0</color>
+    <color name="category_colours">#8800A0</color>
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>

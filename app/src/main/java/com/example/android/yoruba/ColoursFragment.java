@@ -1,17 +1,24 @@
 package com.example.android.yoruba;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ColoursFragment extends Fragment {
 
     // media player object
     private MediaPlayer mMediaPlayer;
@@ -20,6 +27,8 @@ public class ColorsActivity extends AppCompatActivity {
      * Handles audio focus when playing a sound file
      */
     private AudioManager mAudioManager;
+
+
     /**
      * This listener gets triggered whenever the audio focus changes
      * (i.e., we gain or lose audio focus because of another app or device).
@@ -46,8 +55,11 @@ public class ColorsActivity extends AppCompatActivity {
                 // Stop playback and clean up resources
                 releaseMediaPlayer ();
             }
+
         }
+
     };
+
     /**
      * This listener gets triggered when the {@link MediaPlayer} has completed
      * playing the audio file.
@@ -59,15 +71,25 @@ public class ColorsActivity extends AppCompatActivity {
             // Now that the sound file has finished playing, release the media player resources.
             releaseMediaPlayer ();
         }
+
     };
 
+
+    public ColoursFragment() {
+        // Required empty public constructor
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate (R.layout.word_list, container, false);
+
+        //create and setup link to get audio focus
+        mAudioManager = (AudioManager) getActivity ().getSystemService (Context.AUDIO_SERVICE);
+
 
         // Create and setup the {@link AudioManager} to request audio focus
-        mAudioManager = (AudioManager) getSystemService (Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getActivity ().getSystemService (Context.AUDIO_SERVICE);
 
         //Create an Arraylist of words objects
         final ArrayList <Word> words = new ArrayList <Word> ();
@@ -77,18 +99,18 @@ public class ColorsActivity extends AppCompatActivity {
         words.add (new Word ("yellow", " ìyèyè", R.drawable.color_mustard_yellow, R.raw.yellow));
         words.add (new Word ("grey", "éérú", R.drawable.color_gray, R.raw.gray));
         words.add (new Word ("red", "pupa", R.drawable.color_red, R.raw.red));
-        words.add (new Word ("green", "ewéko", R.drawable.color_green, R.raw.green));
+        words.add (new Word ("green", "àwö ewé", R.drawable.color_green, R.raw.green));
 
         // Create an {@link WordAdapter}, whose data source is a list of
         // {@link Word}s. The adapter knows how to create list item views for each item
         // in the list.
-        WordAdapter wordadapter = new WordAdapter (this, words, R.color.category_colors);
+        WordAdapter wordadapter = new WordAdapter (getActivity (), words, R.color.category_colours);
 
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // word_list.xml layout file.
-        ListView listView = findViewById (R.id.word_list);
+        final ListView listView = rootView.findViewById (R.id.word_list);
 
         // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Word} in the list.
@@ -117,7 +139,7 @@ public class ColorsActivity extends AppCompatActivity {
 
                     // Create and setup the {@link MediaPlayer} for the audio resource associated
                     // with the current word
-                    mMediaPlayer = MediaPlayer.create (ColorsActivity.this, word.getAudioResourceId ());
+                    mMediaPlayer = MediaPlayer.create (getActivity (), word.getAudioResourceId ());
 
                     // Start the audio file
                     mMediaPlayer.start ();
@@ -129,17 +151,15 @@ public class ColorsActivity extends AppCompatActivity {
                 }
             }
         });
-
+        return rootView;
     }
 
+    // release audio resource when activity is stoppe
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop ();
-        // When the activity is stopped, release the media player resources because we won't
-        // be playing any more sounds.
         releaseMediaPlayer ();
     }
-
 
     /**
      * Clean up the media player by releasing its resources.
@@ -165,3 +185,9 @@ public class ColorsActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
+
+
