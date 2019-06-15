@@ -23,7 +23,7 @@
     <string name="category_colours">Colours</string>
 
     <!-- Category name for the vocabulary words for daysmonths [CHAR LIMIT=20] -->
-    <string name="category_daysmonths">Days-Months</string>
+    <string name="category_daysmonths">Days Months</string>
 
     <!-- Category name for the vocabulary words for numbers [CHAR LIMIT=20] -->
     <string name="category_numbers">Numbers</string>
