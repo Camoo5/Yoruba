@@ -15,12 +15,12 @@
     <color name="category_family">#379237</color>
 
     <!-- Background color for the colors category -->
-    <color name="category_colours">#8800A0</color>
+    <color name="category_colours">#963AB7</color>
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
 
     <!-- Background color for the daysmonths category -->
-    <color name="category_daysmonths">#B000D44E</color>
+    <color name="category_daysmonths">#3F51B5</color>
 
 </resources>

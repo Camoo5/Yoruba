@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         // Create an adapter that knows which fragment should be shown on each page
         CategoryAdapter adapter = new CategoryAdapter (this, getSupportFragmentManager ());
 
-        // Set the adapter onto the view pager
+        // Set the adapter onto the viewpager
         viewPager.setAdapter (adapter);
 
         // Give the TabLayout the ViewPager
